@@ -4,14 +4,27 @@ import pandas as pd
 import numpy as np
 #to plot
 import matplotlib.pylab as plt
+
+
 #set parameters
 %matplotlib inline
 plt.rcParams['figure.figsize'] = 15, 6
+
+
 #lamda function to define date format
 dateparse = lambda dates: pd.datetime.strptime(dates, '%m/%d/%Y')
 # tab delimited; specify the time column
 data = pd.read_csv('C:\\Users\\sukanyabhat\\Desktop\\GODADDY\\Data\\student_data_20160215\\student_data_20160215.txt', sep="\t",parse_dates='orderdate', index_col='orderdate',date_parser=dateparse)
-print (data.head())
+
+#Let's take one subset of data and plot its TS
+#Need to modify this code to group on all the combinations and pull time series
+# something like pandas group by 
+data_subset=data[(data.report_region_1=='APAC') & (data.report_region_2=='APAC-Tier3') & (data.product_category_id==6)]
+#since TS needs sorted data
+data_subset.sortlevel(['orderdate'],inplace=True)
+
+#print (data.head())
+
 #time series of gcr
 ts_gcr = data['gcr'] 
 #time series of orders
