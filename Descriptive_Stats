@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 #to plot
 import matplotlib.pylab as plt
+#for adjusted dickey fuller test
+from statsmodels.tsa.stattools import adfuller
 
 
 #set parameters
@@ -31,3 +33,22 @@ ts_gcr = data['gcr']
 ts_orders = data['orders'] 
 plt.plot(ts_gcr)
 plt.plot(ts_orders)
+#taking span of 30 since it is daily data
+rolmean = pd.rolling_mean(ts_gcr, window=30)
+rolstd = pd.rolling_std(ts_gcr, window=30)
+
+#Plot rolling statistics:
+orig = plt.plot(ts_gcr, color='blue',label='Original')
+mean = plt.plot(rolmean, color='red', label='Rolling Mean')
+std = plt.plot(rolstd, color='black', label = 'Rolling Std')
+plt.legend(loc='best')
+plt.title('Rolling Mean & Standard Deviation')
+plt.show(block=False)
+    
+#Perform Dickey-Fuller test:
+print ('Results of Dickey-Fuller Test:')
+dftest = adfuller(ts_gcr, autolag='AIC')
+dfoutput = pd.Series(dftest[0:4], index=['Test Statistic','p-value','#Lags Used','Number of Observations Used'])
+for key,value in dftest[4].items():
+    dfoutput['Critical Value (%s)'%key] = value
+print (dfoutput)
