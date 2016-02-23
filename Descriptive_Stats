@@ -12,3 +12,9 @@ dateparse = lambda dates: pd.datetime.strptime(dates, '%m/%d/%Y')
 # tab delimited; specify the time column
 data = pd.read_csv('C:\\Users\\sukanyabhat\\Desktop\\GODADDY\\Data\\student_data_20160215\\student_data_20160215.txt', sep="\t",parse_dates='orderdate', index_col='orderdate',date_parser=dateparse)
 print (data.head())
+#time series of gcr
+ts_gcr = data['gcr'] 
+#time series of orders
+ts_orders = data['orders'] 
+plt.plot(ts_gcr)
+plt.plot(ts_orders)
