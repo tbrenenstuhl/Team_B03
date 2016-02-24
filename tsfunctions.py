@@ -35,7 +35,9 @@ def ts_run():
 	#list of product id's
 	prod_id = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
 	
-	for m, r in it.combinations(metrics, subregions):
+	# needs a different function other than it.combinations; this throws an error stating list object cannot
+	# be interpreted as an integer
+	for m, r in it.combinations(metrics, subregions): 
 		data_subset=tsn.data[(tsn.data.report_region_2==subregions) & (tsn.data.product_category_id==prod_id)]
 		data_subset.sortlevel(['orderdate'],inplace=True)
 		
