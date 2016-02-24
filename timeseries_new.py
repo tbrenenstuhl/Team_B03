@@ -16,7 +16,7 @@ dateparse = lambda dates: pd.datetime.strptime(dates, '%m/%d/%Y')
 #requires input from stdin
 #fileLocation = input ("Please list file location: ")
 # tab delimited; specify the time column
-data = pd.read_csv('C:\Users\Tyler\Desktop\GoDaddy_Data\student_data_20160215\use_this_data.csv', sep="\t",parse_dates='orderdate', index_col='orderdate',date_parser=dateparse)
+data = pd.read_csv('C:\\Users\\Tyler\\Desktop\\GoDaddy_Data\\student_data_20160215\\student_data_20160215.csv', sep="\t",parse_dates='orderdate', index_col='orderdate',date_parser=dateparse)
 
 #set parameters
 #%matplotlib inline
