@@ -28,7 +28,7 @@ def ts_run():
 	usa = ['United States']
 	canada = ['Canada']	
 	#list of metric variables
-	metrics = [ts_gcr, ts_orders, ts_months, ts_units, ts_gcrmonth, ts_gcrunits, ts_monthsunit]
+	metrics = [tsn.ts_gcr, tsn.ts_orders, tsn.ts_months, tsn.ts_units, tsn.ts_gcrmonth, tsn.ts_gcrunits, tsn.ts_monthsunit]
 	#list of regions
 	subregions = [apac, emea, latam, canada, usa, others]
 	#list of product id's
