@@ -11,6 +11,7 @@ print ()
 
 def ts_run():
 	import pandas as pd
+	import itertools as it
 	import timeseries_new as tsn	
 	#metric variables from data file columns
 	ts_gcr = tsn.data['gcr'] 
@@ -34,7 +35,7 @@ def ts_run():
 	#list of product id's
 	prod_id = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
 	
-	for m, r in zip(metrics, subregions):
+	for m, r in it.combinations(metrics, subregions):
 		data_subset=tsn.data[(tsn.data.report_region_2==subregions) & (tsn.data.product_category_id==prod_id)]
 		data_subset.sortlevel(['orderdate'],inplace=True)
 		
