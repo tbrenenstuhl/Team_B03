@@ -17,9 +17,9 @@ def ts_run():
 	ts_orders = tsn.data['orders'] 
 	ts_months = tsn.data['product_months']
 	ts_units = tsn.data['product_units']
-	ts_gcrmonth = tsn.data['gcr'] / data['product_months']
-	ts_gcrunits = tsn.data['gcr'] / data['product_units']
-	ts_monthsunit = tsn.data['product_months'] / data['product_units']
+	ts_gcrmonth = tsn.data['gcr'] / tsn.data['product_months']
+	ts_gcrunits = tsn.data['gcr'] / tsn.data['product_units']
+	ts_monthsunit = tsn.data['product_months'] / tsn.data['product_units']
 	#subregion lists from respective regions
 	apac = ['India', 'China', 'Australia', 'APAC-Tier2', 'APAC-Tier3']
 	emea = ['Turkey', 'United Kingdom', 'EMEA-Tier2', 'EMEA-Tier3']
