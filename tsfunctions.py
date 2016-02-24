@@ -34,12 +34,23 @@ def ts_run():
 	subregions = [apac, emea, latam, canada, usa, others]
 	#list of product id's
 	prod_id = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
+	#date variable
+	ordDate = data['orderdate']
 	
-	# needs a different function other than it.combinations; this throws an error stating list object cannot
-	# be interpreted as an integer
-	for m, r in it.combinations(metrics, subregions): 
-		data_subset=tsn.data[(tsn.data.report_region_2==subregions) & (tsn.data.product_category_id==prod_id)]
-		data_subset.sortlevel(['orderdate'],inplace=True)
+	# THIS IS A WORK IN PROGRESS
+	x = []
+	set_region = sorted(set(subregions))
+	set_product = sorted(set(prod_id))
+	for i in range(len(set_region)):
+		for j in range(len(set_product)):
+			for k in range(len(subregions)):
+				if set_region[i] == subregions[k]:
+					if set_product[j] == prod_id[k]:
+						M = metrics[k]
+						D = ordDate[k]
+						x.append(M, D)
+		plot(x)
+	data_subset.sortlevel(['orderdate'],inplace=True)	
 		
 #Plot metric
 def ts_plot(metric):
