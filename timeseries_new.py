@@ -22,10 +22,19 @@ data = pd.read_csv('C:\\Users\\Tyler\\Desktop\\GoDaddy_Data\\student_data_201602
 #%matplotlib inline
 plt.rcParams['figure.figsize'] = 15, 6
 
+#metric variables from data file columns
+ts_gcr = data['gcr'] 
+ts_orders = data['orders'] 
+ts_months = data['product_months']
+ts_units = data['product_units']
+ts_gcrmonth = data['gcr'] / data['product_months']
+ts_gcrunits = data['gcr'] / data['product_units']
+ts_monthsunit = data['product_months'] / data['product_units']
+	
 #run the ts code
 tsf.ts_run()
 
 #run module functions
-tsf.ts_plot(tsf.ts_gcr)
-tsf.ts_rollingStats(tsf.ts_gcr)
-tsf.ts_df(tsf.ts_gcr)
+tsf.ts_plot(ts_gcr)
+tsf.ts_rollingStats(ts_gcr)
+tsf.ts_df(ts_gcr)
